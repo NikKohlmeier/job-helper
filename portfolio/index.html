@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nik Kohlmeier - Frontend-focused web developer with Java, JavaScript, and modern web development expertise.">
+    <meta name="author" content="Nik Kohlmeier">
+    <title>Nik Kohlmeier | Frontend Web Developer</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts - Modern, clean sans-serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__container">
+            <a href="#home" class="nav__logo">NK</a>
+            <ul class="nav__menu">
+                <li><a href="#about" class="nav__link">About</a></li>
+                <li><a href="#skills" class="nav__link">Skills</a></li>
+                <li><a href="#work" class="nav__link">Work</a></li>
+                <li><a href="#projects" class="nav__link">Projects</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <p class="hero__greeting">Hi, I'm</p>
+                <h1 class="hero__title">Nik Kohlmeier</h1>
+                <p class="hero__subtitle">Frontend-focused Web Developer</p>
+                <p class="hero__description">
+                    I build clean, accessible web experiences with JavaScript, HTML, and CSS.
+                    Recently expanding into Java backend development while staying true to my frontend roots.
+                </p>
+                <div class="hero__cta">
+                    <a href="#projects" class="btn btn--primary">View My Work</a>
+                    <a href="#contact" class="btn btn--secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about__content">
+                <div class="about__text">
+                    <p>
+                        I'm a frontend-focused web developer based in <strong>Fort Wayne, Indiana</strong>,
+                        with a passion for creating intuitive, performant web experiences. With <strong>8+ years</strong>
+                        working with WordPress and modern JavaScript, I've built everything from custom plugins
+                        to enterprise authentication systems.
+                    </p>
+                    <p>
+                        My background in <strong>fine arts (BFA)</strong> gives me a unique perspective—I understand
+                        both the technical implementation and the design thinking that makes great user experiences.
+                        I prefer <strong>vanilla JavaScript</strong> and clean, maintainable code over framework complexity.
+                    </p>
+                    <p>
+                        Recently, I've been expanding my skillset into <strong>Java backend development</strong>
+                        through an enterprise IAM project, building custom Keycloak plugins and FreeMarker templates.
+                        I'm excited to continue growing my full-stack capabilities while leveraging my frontend foundation.
+                    </p>
+                    <div class="about__highlights">
+                        <div class="about__highlight">
+                            <span class="about__highlight-number">8+</span>
+                            <span class="about__highlight-label">Years Experience</span>
+                        </div>
+                        <div class="about__highlight">
+                            <span class="about__highlight-number">1+</span>
+                            <span class="about__highlight-label">Year Java</span>
+                        </div>
+                        <div class="about__highlight">
+                            <span class="about__highlight-number">99%+</span>
+                            <span class="about__highlight-label">Uptime Record</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills__grid">
+                <div class="skills__category">
+                    <h3 class="skills__category-title">Frontend</h3>
+                    <ul class="skills__list">
+                        <li class="skills__item" data-skill="JavaScript (Vanilla)">
+                            <div class="skills__header">
+                                <span class="skills__name">JavaScript (Vanilla)</span>
+                                <span class="skills__level">Expert</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--expert" data-percent="95"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>5+ years</strong> — Used in Keycloak (600+ lines), GSAP animations, DOM manipulation
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="HTML & CSS">
+                            <div class="skills__header">
+                                <span class="skills__name">HTML & CSS</span>
+                                <span class="skills__level">Expert</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--expert" data-percent="95"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>8+ years</strong> — BEM methodology, accessibility advocate, pixel-perfect implementations
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="GSAP Animations">
+                            <div class="skills__header">
+                                <span class="skills__name">GSAP Animations</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="75"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Smooth animations, scroll triggers, interactive demos like spacecursor
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Vue.js">
+                            <div class="skills__header">
+                                <span class="skills__name">Vue.js</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="65"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    .NET frontend development, component-based architecture
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="React">
+                            <div class="skills__header">
+                                <span class="skills__name">React</span>
+                                <span class="skills__level">Foundational</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--foundational" data-percent="45"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Learning, app development experience, migrating to Lit components
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skills__category">
+                    <h3 class="skills__category-title">Backend</h3>
+                    <ul class="skills__list">
+                        <li class="skills__item" data-skill="Java">
+                            <div class="skills__header">
+                                <span class="skills__name">Java</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="70"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>1+ year</strong> — Built 4 Keycloak SPI plugins, Maven, enterprise IAM systems
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="PHP">
+                            <div class="skills__header">
+                                <span class="skills__name">PHP</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="75"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>3+ years</strong> — WordPress plugin development, backend logic, database integration
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="SQL / Databases">
+                            <div class="skills__header">
+                                <span class="skills__name">SQL / Databases</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="70"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>2+ years</strong> — MS SQL Server, query optimization, database design
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="C# / ASP.NET">
+                            <div class="skills__header">
+                                <span class="skills__name">C# / ASP.NET</span>
+                                <span class="skills__level">Foundational</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--foundational" data-percent="50"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Spun up .NET projects with Vue frontends, basic understanding
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="FreeMarker">
+                            <div class="skills__header">
+                                <span class="skills__name">FreeMarker</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="75"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>1+ year</strong> — 17+ custom templates for Keycloak, loves this!
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skills__category">
+                    <h3 class="skills__category-title">Tools & Platforms</h3>
+                    <ul class="skills__list">
+                        <li class="skills__item" data-skill="Git / GitHub">
+                            <div class="skills__header">
+                                <span class="skills__name">Git / GitHub</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="70"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Version control, branching strategies, code reviews
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Azure DevOps">
+                            <div class="skills__header">
+                                <span class="skills__name">Azure DevOps</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="70"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>1+ year</strong> — Pull/push workflows, work item tracking, pipelines
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Jira (Agile)">
+                            <div class="skills__header">
+                                <span class="skills__name">Jira (Agile)</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="65"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>2+ months</strong> — Sprint planning, task tracking, agile workflows
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Docker">
+                            <div class="skills__header">
+                                <span class="skills__name">Docker</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="65"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Local dev environments, Docker Desktop, container workflows
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="WordPress">
+                            <div class="skills__header">
+                                <span class="skills__name">WordPress</span>
+                                <span class="skills__level">Expert</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--expert" data-percent="95"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>8+ years</strong> — Custom themes/plugins, cost optimization, 99%+ uptime
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skills__category">
+                    <h3 class="skills__category-title">Web Concepts & Best Practices</h3>
+                    <ul class="skills__list">
+                        <li class="skills__item" data-skill="Accessibility (WCAG)">
+                            <div class="skills__header">
+                                <span class="skills__name">Accessibility (WCAG)</span>
+                                <span class="skills__level">Expert</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--expert" data-percent="90"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>Accessibility Champion</strong> — Semantic HTML, ARIA, keyboard navigation, screen reader testing
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Responsive Design">
+                            <div class="skills__header">
+                                <span class="skills__name">Responsive Design</span>
+                                <span class="skills__level">Expert</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--expert" data-percent="95"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Mobile-first approach, fluid layouts, CSS Grid & Flexbox, cross-device testing
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Performance Optimization">
+                            <div class="skills__header">
+                                <span class="skills__name">Performance Optimization</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="75"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Cost optimization, lazy loading, code splitting, Core Web Vitals, 99%+ uptime record
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="SEO">
+                            <div class="skills__header">
+                                <span class="skills__name">SEO</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="70"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Semantic markup, meta tags, structured data, WordPress SEO plugins, site optimization
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Cross-browser Compatibility">
+                            <div class="skills__header">
+                                <span class="skills__name">Cross-browser Compatibility</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="75"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Progressive enhancement, feature detection, polyfills, browser testing workflows
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section - Interactive Demos -->
+    <section id="work" class="work">
+        <div class="container">
+            <h2 class="section-title">Interactive Work</h2>
+            <p class="work__intro">
+                Sometimes the best way to show what you can do is to let you experience it.
+                Here's a playful GSAP experiment that combines animation, interaction, and a bit of fun.
+            </p>
+
+            <div class="work__demo-container">
+                <div class="work__demo work__demo--spacecursor" id="spacecursor-demo">
+                    <div class="work__demo-content">
+                        <h3 class="work__demo-title">Space Cursor</h3>
+                        <p class="work__demo-description">
+                            A smooth GSAP-powered spaceship cursor that rotates based on movement direction.
+                            Fly over the moon to make it glow! Built with vanilla JavaScript and GSAP.
+                        </p>
+                        <div class="work__demo-tech">
+                            <span>GSAP</span>
+                            <span>Vanilla JS</span>
+                            <span>CSS</span>
+                            <span>Collision Detection</span>
+                        </div>
+                    </div>
+
+                    <div class="spacecursor">
+                        <div class="spacecursor__moon" id="moon"></div>
+                        <div class="spacecursor__cursor" id="cursor"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects__grid">
+
+                <!-- Keycloak IAM Project -->
+                <article class="project project--featured">
+                    <div class="project__content">
+                        <span class="project__tag">Enterprise • Recent</span>
+                        <h3 class="project__title">Keycloak IAM Customization</h3>
+                        <p class="project__description">
+                            Enterprise identity and access management system with custom authentication flows.
+                            Built 4 Java SPI plugins, 17+ FreeMarker templates, and 600+ lines of vanilla JavaScript
+                            for form validation and password security.
+                        </p>
+                        <ul class="project__tech">
+                            <li>Java 11</li>
+                            <li>FreeMarker</li>
+                            <li>JavaScript</li>
+                            <li>Maven</li>
+                            <li>Docker</li>
+                            <li>Azure DevOps</li>
+                        </ul>
+                        <div class="project__highlights">
+                            <div class="project__highlight-item">
+                                <strong>4</strong> Custom Java Plugins
+                            </div>
+                            <div class="project__highlight-item">
+                                <strong>17+</strong> FreeMarker Templates
+                            </div>
+                            <div class="project__highlight-item">
+                                <strong>600+</strong> Lines of JS
+                            </div>
+                        </div>
+                        <div class="project__links">
+                            <span class="project__note">Enterprise Project (Private)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- WordPress Custom Plugin -->
+                <article class="project">
+                    <div class="project__content">
+                        <span class="project__tag">Cost Optimization</span>
+                        <h3 class="project__title">Custom WordPress Plugin</h3>
+                        <p class="project__description">
+                            Built custom WordPress plugin to replace Google Maps API, significantly reducing annual
+                            costs while maintaining functionality. Demonstrates PHP, JavaScript, and API integration skills.
+                        </p>
+                        <ul class="project__tech">
+                            <li>WordPress</li>
+                            <li>PHP</li>
+                            <li>JavaScript</li>
+                            <li>SQL</li>
+                        </ul>
+                        <div class="project__links">
+                            <span class="project__note">Proprietary</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Portfolio Site -->
+                <article class="project">
+                    <div class="project__content">
+                        <span class="project__tag">Meta</span>
+                        <h3 class="project__title">Portfolio Website</h3>
+                        <p class="project__description">
+                            This site! Built with vanilla JavaScript, modern CSS with BEM methodology, and GSAP animations.
+                            Deployed via Vite + GitHub Actions for automated CI/CD. Features dark/light mode
+                            and smooth scroll animations.
+                        </p>
+                        <ul class="project__tech">
+                            <li>Vanilla JS</li>
+                            <li>BEM CSS</li>
+                            <li>GSAP</li>
+                            <li>Vite</li>
+                            <li>GitHub Actions</li>
+                        </ul>
+                        <div class="project__links">
+                            <a href="https://github.com/NikKohlmeier" class="project__link" target="_blank" rel="noopener">
+                                View Code →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact__content">
+                <p class="contact__intro">
+                    I'm currently open to new opportunities, especially roles that value frontend expertise
+                    with room to grow backend skills. Based in Fort Wayne, Indiana, and open to remote or
+                    hybrid positions.
+                </p>
+                <div class="contact__links">
+                    <a href="mailto:kohlmeier.nik@gmail.com" class="contact__link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        kohlmeier.nik@gmail.com
+                    </a>
+                    <a href="tel:260-580-1490" class="contact__link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        260-580-1490
+                    </a>
+                    <a href="https://www.linkedin.com/in/nik-kohlmeier/" class="contact__link" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/NikKohlmeier" class="contact__link" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://codepen.io/nkohlmeier" class="contact__link" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                            <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
+                            <line x1="12" y1="2" x2="12" y2="8.5"></line>
+                        </svg>
+                        CodePen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Nik Kohlmeier. Built with vanilla JS, BEM CSS, GSAP, and Vite.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "nik-kohlmeier-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Nik Kohlmeier - Frontend-focused Web Developer",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["portfolio", "web developer", "frontend"],
+  "author": "Nik Kohlmeier",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^7.2.2"
+  }
+}
