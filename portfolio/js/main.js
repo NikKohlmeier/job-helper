@@ -142,16 +142,19 @@ gsap.from('.work__demo', {
   }
 });
 
-// Projects
-gsap.from('.project', {
-  opacity: 0,
-  y: 50,
-  duration: 0.8,
-  stagger: 0.2,
-  scrollTrigger: {
-    trigger: '.projects__grid',
-    start: 'top 80%'
-  }
+// Projects - animate each individually to ensure they all appear
+document.querySelectorAll('.project').forEach((project, index) => {
+  gsap.from(project, {
+    opacity: 0,
+    y: 50,
+    duration: 0.8,
+    delay: index * 0.2,
+    scrollTrigger: {
+      trigger: project,
+      start: 'top 85%',
+      toggleActions: 'play none none none'
+    }
+  });
 });
 
 // Contact links
