@@ -225,10 +225,11 @@ if (spacecursorDemo) {
   let isOverMoon = false;
   let lastAngle = 0;
 
-  spacecursorDemo.addEventListener('mousemove', (e) => {
+  // Unified handler for both mouse and touch
+  const handleMove = (clientX, clientY) => {
     const rect = spacecursorDemo.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
     if (lastX !== undefined && lastY !== undefined) {
       const deltaX = x - lastX;
@@ -300,9 +301,9 @@ if (spacecursorDemo) {
         ease: 'power.out',
       });
     }
-  });
+  };
 
-  spacecursorDemo.addEventListener('mouseleave', () => {
+  const handleEnd = () => {
     gsap.to(cursor, {
       duration: 0.5,
       opacity: 0
@@ -315,12 +316,43 @@ if (spacecursorDemo) {
         ease: 'power.out',
       });
     }
-  });
+    lastX = undefined;
+    lastY = undefined;
+  };
 
-  spacecursorDemo.addEventListener('mouseenter', () => {
+  const handleStart = () => {
     gsap.to(cursor, {
       duration: 0.5,
       opacity: 1
     });
+  };
+
+  // Mouse events
+  spacecursorDemo.addEventListener('mousemove', (e) => {
+    handleMove(e.clientX, e.clientY);
   });
+
+  spacecursorDemo.addEventListener('mouseleave', handleEnd);
+  spacecursorDemo.addEventListener('mouseenter', handleStart);
+
+  // Touch events
+  spacecursorDemo.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    handleStart();
+    const touch = e.touches[0];
+    handleMove(touch.clientX, touch.clientY);
+  });
+
+  spacecursorDemo.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    handleMove(touch.clientX, touch.clientY);
+  });
+
+  spacecursorDemo.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    handleEnd();
+  });
+
+  spacecursorDemo.addEventListener('touchcancel', handleEnd);
 }
