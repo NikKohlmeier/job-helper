@@ -1042,8 +1042,8 @@ section {
   box-shadow: 0 4px 12px var(--color-shadow);
   position: relative;
   overflow: hidden;
-  min-width: 280px;
-  flex: 0 1 auto;
+  width: 450px;
+  max-width: 90vw;
 
   &::before {
     content: '';
