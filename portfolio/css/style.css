@@ -442,6 +442,8 @@ section {
   }
 
   &:hover {
+    z-index: 100;
+
     .skills__header,
     .skills__bar {
       transform: translateX(4px);
