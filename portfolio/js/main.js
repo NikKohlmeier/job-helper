@@ -199,17 +199,25 @@ const isMobile = () => window.innerWidth <= 1024;
 let activeTooltip = null;
 let isScrolling = false;
 let scrollTimeout;
+let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
 window.addEventListener('scroll', () => {
-  isScrolling = true;
-  clearTimeout(scrollTimeout);
+  const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  // Hide active tooltip during scroll
-  if (activeTooltip && isMobile()) {
-    activeTooltip.classList.remove('skills__item--active');
-    activeTooltip = null;
+  // Only consider it scrolling if the position actually changed
+  if (Math.abs(currentScrollTop - lastScrollTop) > 5) {
+    isScrolling = true;
+
+    // Hide active tooltip during scroll
+    if (activeTooltip && isMobile()) {
+      activeTooltip.classList.remove('skills__item--active');
+      activeTooltip = null;
+    }
   }
 
+  lastScrollTop = currentScrollTop;
+
+  clearTimeout(scrollTimeout);
   scrollTimeout = setTimeout(() => {
     isScrolling = false;
   }, 150);
@@ -220,20 +228,43 @@ document.querySelectorAll('.skills__item').forEach(item => {
   const handleTouch = (e) => {
     if (!isMobile()) return;
 
-    // Don't interfere if actively scrolling
-    if (isScrolling) return;
+    console.log('Mobile click detected on:', item.dataset.skill);
+    console.log('isScrolling:', isScrolling);
+
+    // Don't interfere if actively scrolling (but give it more leniency)
+    if (isScrolling) {
+      console.log('Blocked by isScrolling');
+      return;
+    }
 
     // Toggle tooltip
     if (activeTooltip === item) {
+      console.log('Closing tooltip');
+      const tooltip = item.querySelector('.skills__tooltip');
+      if (tooltip) {
+        tooltip.style.opacity = '0';
+        tooltip.style.visibility = 'hidden';
+      }
       item.classList.remove('skills__item--active');
       activeTooltip = null;
     } else {
+      console.log('Opening tooltip');
       // Close previous tooltip
       if (activeTooltip) {
+        const prevTooltip = activeTooltip.querySelector('.skills__tooltip');
+        if (prevTooltip) {
+          prevTooltip.style.opacity = '0';
+          prevTooltip.style.visibility = 'hidden';
+        }
         activeTooltip.classList.remove('skills__item--active');
       }
       // Open new tooltip
       item.classList.add('skills__item--active');
+      const tooltip = item.querySelector('.skills__tooltip');
+      if (tooltip) {
+        tooltip.style.opacity = '1';
+        tooltip.style.visibility = 'visible';
+      }
       activeTooltip = item;
     }
   };

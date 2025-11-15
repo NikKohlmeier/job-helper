@@ -570,12 +570,19 @@ section {
   /* Mobile active state */
   @media (max-width: 1024px) {
     &--active {
-      z-index: 100;
+      z-index: 1000;
 
       .skills__tooltip {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
+        position: fixed !important;
+        left: 50% !important;
+        top: 20px !important;
+        transform: translateX(-50%) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        pointer-events: auto !important;
+        transition: none !important;
+        z-index: 9999 !important;
       }
 
       .skills__item-focus {
