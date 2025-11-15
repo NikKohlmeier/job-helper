@@ -166,7 +166,8 @@ gsap.from('.contact__intro', {
   duration: 0.8,
   scrollTrigger: {
     trigger: '.contact__content',
-    start: 'top 80%'
+    start: 'top 95%',
+    toggleActions: 'play none none none'
   }
 });
 
@@ -177,7 +178,8 @@ gsap.from('.contact__link', {
   stagger: 0.1,
   scrollTrigger: {
     trigger: '.contact__links',
-    start: 'top 80%'
+    start: 'top 95%',
+    toggleActions: 'play none none none'
   }
 });
 
