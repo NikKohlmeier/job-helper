@@ -216,56 +216,41 @@ window.addEventListener('scroll', () => {
 });
 
 document.querySelectorAll('.skills__item').forEach(item => {
-  // Touch handling for mobile
-  item.addEventListener('touchstart', (e) => {
-    if (!isMobile() || isScrolling) return;
-
-    // If tapping the same item, close it
-    if (activeTooltip === item) {
-      item.classList.remove('skills__item--active');
-      activeTooltip = null;
-      return;
-    }
-
-    // Close previous tooltip
-    if (activeTooltip) {
-      activeTooltip.classList.remove('skills__item--active');
-    }
-
-    // Open new tooltip
-    item.classList.add('skills__item--active');
-    activeTooltip = item;
-
-    // Prevent default to avoid triggering hover on touch
-    e.preventDefault();
-  });
-
-  // Click handling for mobile (fallback)
-  item.addEventListener('click', (e) => {
+  // Unified touch/click handling for mobile
+  const handleTouch = (e) => {
     if (!isMobile()) return;
 
+    // Don't interfere if actively scrolling
+    if (isScrolling) return;
+
+    // Toggle tooltip
     if (activeTooltip === item) {
       item.classList.remove('skills__item--active');
       activeTooltip = null;
     } else {
+      // Close previous tooltip
       if (activeTooltip) {
         activeTooltip.classList.remove('skills__item--active');
       }
+      // Open new tooltip
       item.classList.add('skills__item--active');
       activeTooltip = item;
     }
-  });
+  };
+
+  // Use click event for mobile (works better than touchstart)
+  item.addEventListener('click', handleTouch);
 });
 
 // Close tooltip when tapping outside
-document.addEventListener('touchstart', (e) => {
+document.addEventListener('click', (e) => {
   if (!isMobile() || !activeTooltip) return;
 
   if (!e.target.closest('.skills__item')) {
     activeTooltip.classList.remove('skills__item--active');
     activeTooltip = null;
   }
-});
+}, true);
 
 // Spacecursor Interactive Demo
 const spacecursorDemo = document.querySelector('.spacecursor');
