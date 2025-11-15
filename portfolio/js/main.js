@@ -104,7 +104,7 @@ gsap.from('.skills__category', {
 });
 
 // Animate skill bars on scroll
-document.querySelectorAll('.skills__bar-fill').forEach(bar => {
+gsap.utils.toArray('.skills__bar-fill').forEach((bar, index) => {
   const percent = bar.getAttribute('data-percent');
 
   gsap.fromTo(bar,
@@ -112,11 +112,12 @@ document.querySelectorAll('.skills__bar-fill').forEach(bar => {
     {
       width: `${percent}%`,
       duration: 1.2,
+      delay: index * 0.05,
       ease: 'power2.out',
       scrollTrigger: {
-        trigger: bar,
-        start: 'top 85%',
-        toggleActions: 'play none none none'
+        trigger: '.skills',
+        start: 'top 70%',
+        once: true
       }
     }
   );

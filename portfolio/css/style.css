@@ -408,8 +408,12 @@ section {
 
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .skills__category {
@@ -417,6 +421,16 @@ section {
   padding: var(--space-lg);
   border-radius: var(--border-radius);
   border: 1px solid var(--color-border);
+
+  /* Right column - flip tooltips to the left */
+  &:nth-child(even) {
+    .skills__tooltip {
+      left: auto;
+      right: 100%;
+      margin-left: 0;
+      margin-right: var(--space-sm);
+    }
+  }
 }
 
 .skills__category-title {
@@ -452,7 +466,6 @@ section {
     .skills__tooltip {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
     }
 
     .skills__bar-fill {
@@ -499,18 +512,18 @@ section {
   transition: all var(--transition-normal);
   position: relative;
   width: 0;
+}
 
-  &--expert {
-    background: linear-gradient(90deg, var(--solarized-blue), var(--solarized-cyan));
-  }
+.skills__bar-fill--expert {
+  background: linear-gradient(90deg, var(--solarized-blue), var(--solarized-cyan));
+}
 
-  &--intermediate {
-    background: linear-gradient(90deg, var(--solarized-green), var(--solarized-yellow));
-  }
+.skills__bar-fill--intermediate {
+  background: linear-gradient(90deg, var(--solarized-green), var(--solarized-yellow));
+}
 
-  &--foundational {
-    background: linear-gradient(90deg, var(--solarized-orange), var(--solarized-yellow));
-  }
+.skills__bar-fill--foundational {
+  background: linear-gradient(90deg, var(--solarized-orange), var(--solarized-yellow));
 }
 
 .skills__tooltip {
@@ -533,11 +546,13 @@ section {
 
   @media (max-width: 1024px) {
     position: fixed;
-    left: 50%;
+    left: 50% !important;
+    right: auto !important;
     top: auto;
     bottom: var(--space-lg);
     transform: translateX(-50%) translateY(10px);
-    margin-left: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     max-width: 90vw;
   }
 }
