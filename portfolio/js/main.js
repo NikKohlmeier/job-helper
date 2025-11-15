@@ -159,30 +159,6 @@ document.querySelectorAll('.project').forEach((project, index) => {
   });
 });
 
-// Contact links
-gsap.from('.contact__intro', {
-  opacity: 0,
-  y: 30,
-  duration: 0.8,
-  scrollTrigger: {
-    trigger: '.contact__content',
-    start: 'top 95%',
-    toggleActions: 'play none none none'
-  }
-});
-
-gsap.from('.contact__link', {
-  opacity: 0,
-  y: 30,
-  duration: 0.6,
-  stagger: 0.1,
-  scrollTrigger: {
-    trigger: '.contact__links',
-    start: 'top 95%',
-    toggleActions: 'play none none none'
-  }
-});
-
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
