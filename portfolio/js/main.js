@@ -216,6 +216,79 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
+// Mobile tooltip handling for skills
+const isMobile = () => window.innerWidth <= 1024;
+let activeTooltip = null;
+let isScrolling = false;
+let scrollTimeout;
+
+window.addEventListener('scroll', () => {
+  isScrolling = true;
+  clearTimeout(scrollTimeout);
+
+  // Hide active tooltip during scroll
+  if (activeTooltip && isMobile()) {
+    activeTooltip.classList.remove('skills__item--active');
+    activeTooltip = null;
+  }
+
+  scrollTimeout = setTimeout(() => {
+    isScrolling = false;
+  }, 150);
+});
+
+document.querySelectorAll('.skills__item').forEach(item => {
+  // Touch handling for mobile
+  item.addEventListener('touchstart', (e) => {
+    if (!isMobile() || isScrolling) return;
+
+    // If tapping the same item, close it
+    if (activeTooltip === item) {
+      item.classList.remove('skills__item--active');
+      activeTooltip = null;
+      return;
+    }
+
+    // Close previous tooltip
+    if (activeTooltip) {
+      activeTooltip.classList.remove('skills__item--active');
+    }
+
+    // Open new tooltip
+    item.classList.add('skills__item--active');
+    activeTooltip = item;
+
+    // Prevent default to avoid triggering hover on touch
+    e.preventDefault();
+  });
+
+  // Click handling for mobile (fallback)
+  item.addEventListener('click', (e) => {
+    if (!isMobile()) return;
+
+    if (activeTooltip === item) {
+      item.classList.remove('skills__item--active');
+      activeTooltip = null;
+    } else {
+      if (activeTooltip) {
+        activeTooltip.classList.remove('skills__item--active');
+      }
+      item.classList.add('skills__item--active');
+      activeTooltip = item;
+    }
+  });
+});
+
+// Close tooltip when tapping outside
+document.addEventListener('touchstart', (e) => {
+  if (!isMobile() || !activeTooltip) return;
+
+  if (!e.target.closest('.skills__item')) {
+    activeTooltip.classList.remove('skills__item--active');
+    activeTooltip = null;
+  }
+});
+
 // Spacecursor Interactive Demo
 const spacecursorDemo = document.querySelector('.spacecursor');
 if (spacecursorDemo) {

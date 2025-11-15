@@ -455,21 +455,45 @@ section {
     border-bottom: none;
   }
 
-  &:hover {
-    z-index: 100;
+  /* Desktop hover behavior */
+  @media (min-width: 1025px) {
+    &:hover {
+      z-index: 100;
 
-    .skills__header,
-    .skills__bar {
-      transform: translateX(4px);
+      .skills__header,
+      .skills__bar {
+        transform: translateX(4px);
+      }
+
+      .skills__tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .skills__bar-fill {
+        filter: brightness(1.1);
+      }
     }
+  }
 
-    .skills__tooltip {
-      opacity: 1;
-      visibility: visible;
-    }
+  /* Mobile active state */
+  @media (max-width: 1024px) {
+    &--active {
+      z-index: 100;
 
-    .skills__bar-fill {
-      filter: brightness(1.1);
+      .skills__tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .skills__item-focus {
+        opacity: 1;
+      }
+
+      .skills__bar-fill {
+        filter: brightness(1.1);
+      }
     }
   }
 }
@@ -548,9 +572,9 @@ section {
     position: fixed;
     left: 50% !important;
     right: auto !important;
-    top: auto;
-    bottom: var(--space-lg);
-    transform: translateX(-50%) translateY(10px);
+    top: var(--space-lg);
+    bottom: auto;
+    transform: translateX(-50%) translateY(-10px);
     margin-left: 0 !important;
     margin-right: 0 !important;
     max-width: 90vw;
@@ -566,6 +590,32 @@ section {
     color: var(--color-accent-primary);
     font-weight: var(--font-weight-semibold);
   }
+}
+
+.skills__item-focus {
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--border-radius);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Focus ring colors matching skill levels */
+.skills__item:has(.skills__bar-fill--expert) .skills__item-focus {
+  background: linear-gradient(90deg, var(--solarized-blue), var(--solarized-cyan));
+  box-shadow: 0 0 0 2px var(--solarized-blue);
+}
+
+.skills__item:has(.skills__bar-fill--intermediate) .skills__item-focus {
+  background: linear-gradient(90deg, var(--solarized-green), var(--solarized-yellow));
+  box-shadow: 0 0 0 2px var(--solarized-green);
+}
+
+.skills__item:has(.skills__bar-fill--foundational) .skills__item-focus {
+  background: linear-gradient(90deg, var(--solarized-orange), var(--solarized-yellow));
+  box-shadow: 0 0 0 2px var(--solarized-orange);
 }
 
 /* ===============================================
