@@ -938,10 +938,11 @@ section {
 
 .contact {
   padding: var(--space-section) 0;
+  background: var(--color-bg-secondary);
 }
 
 .contact__content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
@@ -951,12 +952,16 @@ section {
   color: var(--color-text-secondary);
   margin-bottom: var(--space-xl);
   line-height: 1.8;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact__links {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-sm);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
 }
 
 .contact__link {
@@ -964,24 +969,52 @@ section {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
+  padding: 1.5rem 2rem;
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
   border-radius: var(--border-radius);
   transition: all var(--transition-normal);
   color: var(--color-text-primary);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px var(--color-shadow);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 24px var(--color-shadow);
     background: var(--color-accent-primary);
     color: white;
     border-color: var(--color-accent-primary);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(-3px) scale(1);
   }
 
   svg {
     flex-shrink: 0;
+    transition: transform var(--transition-normal);
+  }
+
+  &:hover svg {
+    transform: scale(1.1) rotate(5deg);
   }
 }
 
