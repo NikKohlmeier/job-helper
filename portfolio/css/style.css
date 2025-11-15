@@ -448,6 +448,7 @@ section {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+      z-index: 1000;
     }
 
     .skills__bar-fill {
