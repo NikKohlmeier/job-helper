@@ -96,6 +96,7 @@ gsap.from('.skills__category', {
   y: 40,
   duration: 0.6,
   stagger: 0.2,
+  clearProps: 'transform',
   scrollTrigger: {
     trigger: '.skills__grid',
     start: 'top 80%'
