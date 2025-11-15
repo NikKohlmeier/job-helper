@@ -873,7 +873,7 @@ section {
   }
 
   .theme-toggle {
-    top: var(--space-sm);
+    bottom: var(--space-sm);
     right: var(--space-sm);
   }
 
