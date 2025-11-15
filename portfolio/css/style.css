@@ -149,7 +149,7 @@ section {
 
 .theme-toggle {
   position: fixed;
-  top: var(--space-lg);
+  bottom: var(--space-lg);
   right: var(--space-lg);
   z-index: var(--z-theme-toggle);
   background: var(--color-bg-secondary);
