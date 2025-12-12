@@ -1,6 +1,6 @@
 # Career Profile Document
-**Created:** October 29, 2025  
-**Last Updated:** October 29, 2025  
+**Created:** October 29, 2025
+**Last Updated:** December 12, 2025  
 
 ---
 
@@ -130,21 +130,51 @@ Frontend-focused full-stack web developer with 8+ years of WordPress expertise a
 
 ## PROFESSIONAL EXPERIENCE
 
-### Current Role: Marketing/Web Developer
-**Organization:** [Current Company]  
-**Location:** Fort Wayne, Indiana  
-**Duration:** 6+ years (role evolution: HR Manager → Marketing Administrator → Developer)  
+### Current Role: Web Developer
+**Organization:** [Current Company]
+**Location:** Fort Wayne, Indiana
+**Duration:** 6+ years (role evolution: HR Manager → Marketing Administrator → Developer)
 **Status:** Currently employed, seeking growth opportunity
+
+**Current Responsibilities:**
+
+**Keycloak Authentication Project:**
+- Building custom Keycloak theme for authentication application deployment across login portals
+- Developing Java plugins to customize authentication flows
+- Maintaining Keycloak admin console
+- Collaborating with UX, PMO, and backend dev team
+- Participating in pull requests from DMV group
+
+**Design System & Frontend Architecture:**
+- Onboarding into design system with team guidance
+- Refactoring React components into native web-components (Lit framework)
+- Participating in rebranding effort in Azure DevOps
+
+**WordPress Portfolio Management:**
+- Building and maintaining ~25 WordPress sites for DMV group
+- Currently developing WordPress site for State of Idaho with accessibility and SEO best practices
+- Maintaining Neumo.com site and archived legacy sites
+- Rapidly deploying SST kiosk information to respective marketing sites as they come online
+- Building WordPress plugins and tooling to extend accessibility and scalability
+- Working with Marketing team to maintain accurate information and add new features
+
+**Typical Weekly Activities:**
+- Building accessible, SEO-optimized WordPress sites for state clients
+- Fixing visual and UX bugs in Keycloak UAT environment (with PMO, backend devs, UX)
+- Refactoring React to web-components in design system
+- Reviewing pull requests from frontend team
+- Continuous learning: studying frameworks, reading articles, building test applications
 
 **Key Accomplishments:**
 
 - **Cost Optimization:** Implemented custom WordPress plugin as alternative to Google Maps API, reducing annual mapping costs by significant margin
-- **Technical Scope:** Responsible for all WordPress site development, maintenance, and custom plugin creation for organization
+- **Technical Scope:** Responsible for all WordPress site development, maintenance, and custom plugin creation (~25 sites)
 - **Accessibility:** Improved website accessibility standards and compliance across multiple properties
 - **Custom Development:** Built custom plugins for state jurisdiction websites and internal tools
 - **Uptime/Reliability:** Maintained 99%+ uptime on WordPress sites serving users
 - **Cross-Functional Impact:** Supported marketing team with web implementations; translated business requirements into technical solutions
 - **Scale:** Managed WordPress infrastructure for multiple sites with varying traffic and complexity
+- **Full-Stack Java Development:** Expanded skillset into Java/Keycloak development for enterprise IAM system
 
 ### Recent Project: Keycloak IAM Customization (Contract/Freelance)
 **Client:** [Contract Work]
