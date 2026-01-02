@@ -37,8 +37,10 @@ wheels/
 # Project specific
 data/cache/
 data/jobs/*.json
+data/scraped/*.json
 data/resumes/*.pdf
 data/resumes/*.docx
+data/.keyring_encrypted
 *.db
 *.sqlite
 
