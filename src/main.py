@@ -10,6 +10,12 @@ from job_manager import Job, JobManager, interactive_add_job
 from job_matcher import JobMatcher
 from resume_generator import ResumeGenerator
 from config import PROFILE_PATH, PROFILE_EMBEDDING_PATH
+from secrets_manager import (
+    interactive_set_secret,
+    delete_secret,
+    print_secrets_status,
+    SECRET_KEYS,
+)
 
 
 def cmd_init(args):
@@ -248,6 +254,44 @@ def cmd_delete_job(args):
         return 1
 
 
+def cmd_secrets(args):
+    """Manage secrets stored in the system keyring."""
+    action = args.action if hasattr(args, 'action') else 'list'
+    
+    if action == 'list':
+        print_secrets_status()
+        return 0
+    
+    elif action == 'set':
+        if not hasattr(args, 'key') or not args.key:
+            print("Error: Please specify a key to set.")
+            print(f"Available keys: {', '.join(SECRET_KEYS.keys())}")
+            return 1
+        
+        if interactive_set_secret(args.key):
+            return 0
+        return 1
+    
+    elif action == 'delete':
+        if not hasattr(args, 'key') or not args.key:
+            print("Error: Please specify a key to delete.")
+            return 1
+        
+        confirm = input(f"Delete secret '{args.key}'? (yes/no): ").strip().lower()
+        if confirm == 'yes':
+            if delete_secret(args.key):
+                print(f"✓ Secret '{args.key}' deleted.")
+                return 0
+            return 1
+        else:
+            print("Cancelled.")
+            return 1
+    
+    else:
+        print(f"Unknown action: {action}")
+        return 1
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -263,6 +307,8 @@ Examples:
   python src/main.py show <job-id>           # Show job details
   python src/main.py generate-resume <id>    # Generate resume
   python src/main.py delete <job-id>         # Delete a job
+  python src/main.py secrets list            # List configured secrets
+  python src/main.py secrets set <KEY>       # Set a secret securely
         """
     )
 
@@ -302,6 +348,27 @@ Examples:
     parser_delete = subparsers.add_parser('delete', help='Delete a job posting')
     parser_delete.add_argument('job_id', help='Job ID to delete')
     parser_delete.set_defaults(func=cmd_delete_job)
+
+    # secrets command
+    parser_secrets = subparsers.add_parser('secrets', help='Manage secrets (API keys, passwords)')
+    secrets_subparsers = parser_secrets.add_subparsers(dest='action', help='Secrets action')
+    
+    # secrets list
+    parser_secrets_list = secrets_subparsers.add_parser('list', help='List all secrets and their status')
+    parser_secrets_list.set_defaults(func=cmd_secrets, action='list')
+    
+    # secrets set
+    parser_secrets_set = secrets_subparsers.add_parser('set', help='Set a secret value')
+    parser_secrets_set.add_argument('key', help='Secret key to set (e.g., OPENAI_API_KEY)')
+    parser_secrets_set.set_defaults(func=cmd_secrets, action='set')
+    
+    # secrets delete
+    parser_secrets_delete = secrets_subparsers.add_parser('delete', help='Delete a secret')
+    parser_secrets_delete.add_argument('key', help='Secret key to delete')
+    parser_secrets_delete.set_defaults(func=cmd_secrets, action='delete')
+    
+    # Default secrets action is list
+    parser_secrets.set_defaults(func=cmd_secrets, action='list')
 
     # Parse arguments
     args = parser.parse_args()

@@ -27,3 +27,6 @@ flask-cors>=4.0.0
 
 # AI-powered job scraping and analysis
 openai>=1.0.0
+
+# Secure secrets management
+keyring>=25.0.0
