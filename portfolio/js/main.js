@@ -240,22 +240,16 @@ document.querySelectorAll('.skills__item').forEach(item => {
   const handleTouch = (e) => {
     if (!isMobile()) return;
 
-    console.log('Mobile click detected on:', item.dataset.skill);
-    console.log('isScrolling:', isScrolling);
-
     // Don't interfere if actively scrolling
     if (isScrolling) {
-      console.log('Blocked by isScrolling');
       return;
     }
 
     // Toggle tooltip
     if (activeTooltip === item) {
-      console.log('Closing tooltip');
       hideAllTooltips();
       activeTooltip = null;
     } else {
-      console.log('Opening tooltip');
       // Close all tooltips first to ensure clean state
       hideAllTooltips();
 
@@ -423,4 +417,50 @@ if (spacecursorDemo) {
   });
 
   spacecursorDemo.addEventListener('touchcancel', handleEnd);
+}
+
+// RLGL iframe loading handler
+const rlglIframe = document.querySelector('.rlgl-preview iframe');
+const rlglFallback = document.querySelector('.rlgl-fallback');
+
+if (rlglIframe && rlglFallback) {
+  let iframeLoaded = false;
+  
+  rlglIframe.addEventListener('load', () => {
+    // Check if iframe actually loaded successfully (not a 404)
+    try {
+      // Try to access iframe content to verify it loaded
+      const iframeDoc = rlglIframe.contentDocument || rlglIframe.contentWindow?.document;
+      
+      if (iframeDoc && iframeDoc.body && iframeDoc.body.innerHTML.trim().length > 0) {
+        // Iframe loaded successfully - hide the "Coming Soon" message
+        iframeLoaded = true;
+        rlglFallback.classList.add('hidden');
+        setTimeout(() => {
+          rlglFallback.style.display = 'none';
+        }, 300);
+      }
+    } catch (e) {
+      // CORS error - can't check content, but assume it loaded if no error event fired
+      // Wait a bit and check if we can see the iframe dimensions/content
+      setTimeout(() => {
+        if (!iframeLoaded) {
+          // If still not confirmed loaded, check iframe dimensions as fallback
+          const iframeHeight = rlglIframe.offsetHeight;
+          if (iframeHeight > 100) {
+            // Iframe has reasonable height, assume it loaded
+            iframeLoaded = true;
+            rlglFallback.classList.add('hidden');
+            setTimeout(() => {
+              rlglFallback.style.display = 'none';
+            }, 300);
+          }
+        }
+      }, 2000);
+    }
+  });
+
+  rlglIframe.addEventListener('error', () => {
+    // Keep "Coming Soon" visible if iframe fails to load
+  });
 }

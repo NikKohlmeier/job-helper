@@ -212,6 +212,21 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="skills__item" data-skill="jQuery">
+                            <div class="skills__item-focus"></div>
+                            <div class="skills__header">
+                                <span class="skills__name">jQuery</span>
+                                <span class="skills__level">Foundational</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--foundational" data-percent="50"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    Legacy experience, comfortable with jQuery for WordPress and legacy codebases
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
 
@@ -374,6 +389,36 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="skills__item" data-skill="Google Analytics">
+                            <div class="skills__item-focus"></div>
+                            <div class="skills__header">
+                                <span class="skills__name">Google Analytics</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="65"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>4+ years</strong> — Setup, tracking implementation, report generation and analysis
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item" data-skill="Google Tag Manager">
+                            <div class="skills__item-focus"></div>
+                            <div class="skills__header">
+                                <span class="skills__name">Google Tag Manager</span>
+                                <span class="skills__level">Intermediate</span>
+                            </div>
+                            <div class="skills__bar">
+                                <div class="skills__bar-fill skills__bar-fill--intermediate" data-percent="60"></div>
+                            </div>
+                            <div class="skills__tooltip">
+                                <div class="skills__tooltip-content">
+                                    <strong>3+ years</strong> — Tag implementation and debugging, event tracking configuration
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
 
@@ -466,10 +511,57 @@
         <div class="container">
             <h2 class="section-title">🚀 Interactive Work</h2>
             <p class="work__intro">
-                Please enjoy a little ride through space. 🌙
+                Interactive demos and projects showcasing my work. 🚀
             </p>
 
             <div class="work__demo-container">
+                <!-- Red Light Green Light -->
+                <div class="work__demo work__demo--rlgl" id="rlgl-demo">
+                    <div class="work__demo-content">
+                        <h3 class="work__demo-title">🚦 Red Light Green Light</h3>
+                        <p class="work__demo-description">
+                            A React Native mobile game that gamifies your daily commutes by tracking traffic lights in real-time.
+                            Features live scoring, drive history, comprehensive stats, and Wordle-style sharing. Built with Expo,
+                            TypeScript, and React Navigation. Includes dark mode, haptic feedback, and persistent local storage.
+                        </p>
+                        <div class="work__demo-tech">
+                            <span>React Native</span>
+                            <span>Expo</span>
+                            <span>TypeScript</span>
+                            <span>React Navigation</span>
+                            <span>AsyncStorage</span>
+                        </div>
+                        <div class="work__demo-links" style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://github.com/NikKohlmeier/RedLight-GreenLight" class="btn-alt" target="_blank" rel="noopener" style="font-size: 0.875rem; padding: 0.5rem 1rem;">
+                                📱 View on GitHub →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="rlgl-preview">
+                        <iframe 
+                            src="https://nikkohlmeier.github.io/redlight-greenlight-app/" 
+                            title="Red Light Green Light - Interactive Demo"
+                            loading="lazy"
+                            allow="clipboard-read; clipboard-write"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals">
+                        </iframe>
+                        <div class="rlgl-fallback">
+                            <div class="rlgl-coming-soon">
+                                <div class="rlgl-coming-soon__icon">🚦</div>
+                                <h3 class="rlgl-coming-soon__title">Red Light Green Light</h3>
+                                <p class="rlgl-coming-soon__message">Coming Soon</p>
+                                <p class="rlgl-coming-soon__description">
+                                    A React Native mobile game that gamifies your daily commutes by tracking traffic lights in real-time.
+                                </p>
+                                <a href="https://github.com/NikKohlmeier/RedLight-GreenLight" class="rlgl-coming-soon__link" target="_blank" rel="noopener">
+                                    View on GitHub →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Space Cursor -->
                 <div class="work__demo work__demo--spacecursor" id="spacecursor-demo">
                     <div class="work__demo-content">
                         <h3 class="work__demo-title">Space Cursor</h3>
