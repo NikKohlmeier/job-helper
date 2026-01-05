@@ -19,6 +19,9 @@
             <span class="navbar-brand mb-0 h1">
                 <i class="bi bi-briefcase-fill"></i> JobHelper
             </span>
+            <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#searchBoardsModal">
+                <i class="bi bi-search"></i> Search Job Boards
+            </button>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addJobModal">
                 <i class="bi bi-plus-circle"></i> Add Job
             </button>
@@ -219,6 +222,69 @@
                     <button type="button" class="btn btn-success" id="generate-resume-btn">
                         <i class="bi bi-file-earmark-text"></i> Generate Resume
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Job Boards Modal -->
+    <div class="modal fade" id="searchBoardsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search Job Boards</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="search-keywords" class="form-label">Keywords (comma-separated)</label>
+                        <input type="text" class="form-control" id="search-keywords" 
+                               placeholder="wordpress, frontend, javascript" 
+                               value="wordpress, frontend, javascript, php, web developer">
+                        <div class="form-text">Leave empty to use default keywords from your profile</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Job Boards</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="board-wwr" checked>
+                            <label class="form-check-label" for="board-wwr">
+                                We Work Remotely
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="board-remoteok" checked>
+                            <label class="form-check-label" for="board-remoteok">
+                                RemoteOK
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="max-results" class="form-label">Max Results per Board</label>
+                        <input type="number" class="form-control" id="max-results" value="20" min="1" max="50">
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary" id="start-search-btn">
+                        <i class="bi bi-search"></i> Search Job Boards
+                    </button>
+                    
+                    <div id="search-results" class="mt-4" style="display: none;">
+                        <h6>Search Results (<span id="results-count">0</span> jobs found)</h6>
+                        <div id="results-list" class="list-group" style="max-height: 500px; overflow-y: auto;">
+                            <!-- Results will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div id="search-loading" class="text-center py-4" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Searching...</span>
+                        </div>
+                        <p class="mt-2">Searching job boards...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
