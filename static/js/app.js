@@ -32,6 +32,12 @@ function setupEventListeners() {
 
     // Cover letter button
     document.getElementById('generate-cover-letter-btn').addEventListener('click', generateCoverLetter);
+    
+    // Search job boards button
+    const searchBtn = document.getElementById('start-search-btn');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', searchJobBoards);
+    }
 }
 
 // Load all jobs from API
@@ -692,4 +698,128 @@ function getScoreColor(score) {
     if (score >= 0.6) return 'bg-info';
     if (score >= 0.4) return 'bg-warning';
     return 'bg-danger';
+}
+
+// Search job boards
+async function searchJobBoards() {
+    const keywordsInput = document.getElementById('search-keywords');
+    const maxResultsInput = document.getElementById('max-results');
+    const resultsDiv = document.getElementById('search-results');
+    const resultsList = document.getElementById('results-list');
+    const resultsCount = document.getElementById('results-count');
+    const loadingDiv = document.getElementById('search-loading');
+    const searchBtn = document.getElementById('start-search-btn');
+    
+    // Get selected boards
+    const boards = [];
+    if (document.getElementById('board-wwr').checked) {
+        boards.push('we_work_remotely');
+    }
+    if (document.getElementById('board-remoteok').checked) {
+        boards.push('remoteok');
+    }
+    
+    if (boards.length === 0) {
+        showError('Please select at least one job board');
+        return;
+    }
+    
+    // Get keywords
+    const keywordsText = keywordsInput.value.trim();
+    const keywords = keywordsText 
+        ? keywordsText.split(',').map(k => k.trim()).filter(k => k)
+        : null;
+    
+    const maxResults = parseInt(maxResultsInput.value) || 20;
+    
+    // Show loading
+    loadingDiv.style.display = 'block';
+    resultsDiv.style.display = 'none';
+    searchBtn.disabled = true;
+    searchBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Searching...';
+    
+    try {
+        const response = await fetch('/api/jobs/search-boards', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                keywords: keywords,
+                boards: boards,
+                max_results: maxResults
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to search job boards');
+        }
+        
+        const data = await response.json();
+        const jobs = data.jobs || [];
+        
+        // Display results
+        resultsCount.textContent = jobs.length;
+        resultsList.innerHTML = '';
+        
+        if (jobs.length === 0) {
+            resultsList.innerHTML = '<div class="alert alert-info">No jobs found matching your keywords.</div>';
+        } else {
+            jobs.forEach((job, index) => {
+                const jobItem = document.createElement('div');
+                jobItem.className = 'list-group-item';
+                jobItem.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">${escapeHtml(job.title)}</h6>
+                            <p class="mb-1 text-muted">
+                                <i class="bi bi-building"></i> ${escapeHtml(job.company)}
+                                ${job.location ? ` | <i class="bi bi-geo-alt"></i> ${escapeHtml(job.location)}` : ''}
+                                ${job.remote ? ' | <span class="badge bg-info">Remote</span>' : ''}
+                            </p>
+                            <small class="text-muted">
+                                <i class="bi bi-link-45deg"></i> <a href="${escapeHtml(job.url)}" target="_blank">View Job</a>
+                                <span class="ms-2">Source: ${escapeHtml(job.source || 'Unknown')}</span>
+                            </small>
+                        </div>
+                        <button class="btn btn-sm btn-primary ms-2" onclick="addJobFromSearch('${escapeHtml(job.url)}')">
+                            <i class="bi bi-plus-circle"></i> Add
+                        </button>
+                    </div>
+                `;
+                resultsList.appendChild(jobItem);
+            });
+        }
+        
+        resultsDiv.style.display = 'block';
+        showSuccess(`Found ${jobs.length} jobs!`);
+        
+    } catch (error) {
+        console.error('Error searching job boards:', error);
+        showError('Failed to search job boards. Please try again.');
+    } finally {
+        loadingDiv.style.display = 'none';
+        searchBtn.disabled = false;
+        searchBtn.innerHTML = '<i class="bi bi-search"></i> Search Job Boards';
+    }
+}
+
+// Add job from search results
+async function addJobFromSearch(url) {
+    // Close search modal
+    const searchModal = bootstrap.Modal.getInstance(document.getElementById('searchBoardsModal'));
+    if (searchModal) {
+        searchModal.hide();
+    }
+    
+    // Open add job modal
+    const addModal = new bootstrap.Modal(document.getElementById('addJobModal'));
+    
+    // Set URL and fetch
+    document.getElementById('job-url').value = url;
+    
+    // Wait for modal to show, then fetch
+    setTimeout(() => {
+        fetchJobFromUrl();
+    }, 300);
+    
+    addModal.show();
 }

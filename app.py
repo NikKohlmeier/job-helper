@@ -15,7 +15,8 @@ from job_matcher import JobMatcher
 from resume_generator import ResumeGenerator
 from profile_vectorizer import ProfileVectorizer
 from ai_scraper import AIJobScraper
-from config import PROFILE_EMBEDDING_PATH, OPENAI_API_KEY
+from job_board_scraper import JobBoardScraper
+from config import PROFILE_EMBEDDING_PATH, OPENAI_API_KEY, SCRAPE_KEYWORDS
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +24,7 @@ CORS(app)
 # Initialize managers
 job_manager = JobManager()
 ai_scraper = AIJobScraper()
+job_board_scraper = JobBoardScraper()
 
 
 @app.route('/')
@@ -275,6 +277,31 @@ Work Preferences:
             return jsonify({'error': 'AI cover letter generation not available. Check OpenAI API key.'}), 503
 
         return jsonify({'cover_letter': cover_letter})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/jobs/search-boards', methods=['POST'])
+def search_job_boards():
+    """Search job boards for matching jobs."""
+    try:
+        data = request.json or {}
+        keywords = data.get('keywords', SCRAPE_KEYWORDS)
+        boards = data.get('boards', ['we_work_remotely', 'remoteok'])
+        max_results = data.get('max_results', 20)
+        
+        # Search job boards
+        jobs = job_board_scraper.search_all_boards(
+            keywords=keywords,
+            boards=boards,
+            max_results_per_board=max_results
+        )
+        
+        return jsonify({
+            'success': True,
+            'jobs': jobs,
+            'count': len(jobs)
+        })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
