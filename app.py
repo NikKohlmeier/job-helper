@@ -291,6 +291,9 @@ def search_job_boards():
         # Ensure keywords is a list
         if keywords and not isinstance(keywords, list):
             keywords = [k.strip() for k in str(keywords).split(',') if k.strip()]
+            # If parsing resulted in empty list (e.g., user passed only commas/whitespace), use defaults
+            if not keywords:
+                keywords = SCRAPE_KEYWORDS
         elif not keywords:
             keywords = SCRAPE_KEYWORDS
         
