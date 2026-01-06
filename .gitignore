@@ -54,3 +54,12 @@ Thumbs.db
 # Portfolio (Node.js)
 portfolio/node_modules/
 portfolio/dist/
+
+# Personal configuration (contains sensitive info)
+personal_config.py
+
+# Local test results and utilities
+TEST_RESULTS.md
+PERSONAL_CONFIG_README.md
+personal_config.example.py
+update_personal_info.py
