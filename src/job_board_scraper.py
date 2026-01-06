@@ -9,8 +9,12 @@ from typing import List, Dict, Optional
 from urllib.parse import urlencode, urljoin, urlparse
 import requests
 from bs4 import BeautifulSoup
+import urllib3
 
 from config import SCRAPE_KEYWORDS
+
+# Disable SSL warnings for sites with certificate issues
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 class JobBoardScraper:
@@ -331,8 +335,15 @@ class JobBoardScraper:
             
             print(f"Scraping RemoteOK JSON: {json_url}")
             
-            response = self.session.get(json_url, timeout=15)
-            response.raise_for_status()
+            # Try with SSL verification first, fall back to unverified if needed
+            try:
+                response = self.session.get(json_url, timeout=15, verify=True)
+                response.raise_for_status()
+            except requests.exceptions.SSLError:
+                # SSL certificate verification failed - try without verification
+                print("Warning: SSL certificate verification failed, trying without verification")
+                response = self.session.get(json_url, timeout=15, verify=False)
+                response.raise_for_status()
             
             # Parse JSON - handle potential errors
             try:
@@ -370,6 +381,10 @@ class JobBoardScraper:
                         job_id = job_data.get('id', '')
                         if job_id:
                             job_url = f"{base_url}/remote-jobs/{job_id}"
+                    
+                    # Validate that we have a valid URL before proceeding
+                    if not job_url:
+                        continue
                     
                     # Check keywords
                     title_lower = title.lower()

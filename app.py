@@ -286,7 +286,14 @@ def search_job_boards():
     """Search job boards for matching jobs."""
     try:
         data = request.json or {}
-        keywords = data.get('keywords', SCRAPE_KEYWORDS)
+        # Handle None/null keywords - use default if None or empty
+        keywords = data.get('keywords') or SCRAPE_KEYWORDS
+        # Ensure keywords is a list
+        if keywords and not isinstance(keywords, list):
+            keywords = [k.strip() for k in str(keywords).split(',') if k.strip()]
+        elif not keywords:
+            keywords = SCRAPE_KEYWORDS
+        
         boards = data.get('boards', ['we_work_remotely', 'remoteok'])
         max_results = data.get('max_results', 20)
         
